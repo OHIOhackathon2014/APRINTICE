@@ -6,6 +6,10 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from zope.sqlalchemy import ZopeTransactionExtension
 
+import cups
+import subprocess
+import os
+
 Base = declarative_base()
 
 DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
@@ -30,6 +34,22 @@ class Job(Base):
     file_name = Column(String(256))
     pages = Column(Integer, nullable=False, default=1, server_default="1")
     time = Column(DateTime)
+
+    def release(self, printer):
+        """Releases the job to the selected printer object
+        """
+
+        # Connect to local server
+        subprocess.call([
+            "/usr/bin/lp",
+            "-d",
+            printer.name,
+            "/var/spool/cups-pdf/%s/%s" % (self.user_name, self.file_name),
+            ])
+
+    def delete(self):
+        os.unlink("/var/spool/cups-pdf/%s/%s" % (self.user_name,
+            self.file_name))
 
 class Printer(Base):
     __tablename__ = "printers"
