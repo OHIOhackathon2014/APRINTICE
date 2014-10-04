@@ -48,6 +48,10 @@ class Job(Base):
             self.file_name,
             ])
 
+    def get_cost(self, printer):
+        """Calculate the cost to print this job
+        """
+
     def delete(self):
         os.unlink(self.file_name)
 

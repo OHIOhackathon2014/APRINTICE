@@ -28,6 +28,7 @@ def main(global_config, **settings):
     config.add_route('home', '/')
     config.add_route("listjobs", "/listjobs")
     config.add_route("deletejob", "/jobs/{id}/delete")
+    config.add_route("releasejob", "/jobs/{id}/release")
     config.scan()
 
     return config.make_wsgi_app()
