@@ -44,12 +44,11 @@ class Job(Base):
             "/usr/bin/lp",
             "-d",
             printer.name,
-            "/var/spool/cups-pdf/%s/%s" % (self.user_name, self.file_name),
+            self.file_name,
             ])
 
     def delete(self):
-        os.unlink("/var/spool/cups-pdf/%s/%s" % (self.user_name,
-            self.file_name))
+        os.unlink(self.file_name)
 
 class Printer(Base):
     __tablename__ = "printers"
