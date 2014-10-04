@@ -26,9 +26,14 @@ def main(global_config, **settings):
 
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.add_route('home', '/')
-    config.add_route("listjobs", "/listjobs")
-    config.add_route("deletejob", "/jobs/{id}/delete")
-    config.add_route("releasejob", "/jobs/{id}/release")
+
+    config.add_route("login", "/login")
+    config.add_route("logout", "/logout")
+
+    config.add_route("get_jobs", "/jobs")
+    config.add_route("get_printers", "/printers")
+    config.add_route("delete_job", "/jobs/{id}/delete")
+
     config.scan()
 
     return config.make_wsgi_app()
