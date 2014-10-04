@@ -1,6 +1,6 @@
 from pyramid.config import Configurator
 
-from .models import configure_database
+from .models import configure_database, create_tables
 
 
 def main(global_config, **settings):
@@ -10,6 +10,7 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
 
     configure_database(settings["database"])
+    create_tables()
 
     config.include('pyramid_chameleon')
     config.add_static_view('static', 'static', cache_max_age=3600)
