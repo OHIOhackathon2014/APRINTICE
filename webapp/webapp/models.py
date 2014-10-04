@@ -30,7 +30,8 @@ class UserData(Base):
 class Job(Base):
     __tablename__ = "jobs"
 
-    user_name = Column(String(64), primary_key=True)
+    id = Column(Integer, primary_key=True)
+    user_name = Column(String(64), nullable=False)
     file_name = Column(String(256))
     pages = Column(Integer, nullable=False, default=1, server_default="1")
     time = Column(DateTime)
