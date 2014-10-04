@@ -34,6 +34,10 @@ class Job(Base):
     user_name = Column(String(64), nullable=False)
     file_name = Column(String(256))
     pages = Column(Integer, nullable=False, default=1, server_default="1")
+    percent_c = Column(Float, default=0, server_default="1")
+    percent_m = Column(Float, default=0, server_default="1")
+    percent_y = Column(Float, default=0, server_default="1")
+    percent_k = Column(Float, default=0, server_default="1")
     time = Column(DateTime)
 
     def release(self, printer):
@@ -52,6 +56,8 @@ class Job(Base):
         """Calculate the cost to print this job
         """
 
+        return printer.cost_per_page * self.pages + printer.cost_c * self.percent_c + printer.cost_m * self.percent_m + printer.cost_y * self.percent_y + printer.cost_k * self.percent_k
+
     def delete(self):
         os.unlink(self.file_name)
 
@@ -63,4 +69,8 @@ class Printer(Base):
     description = Column(Text)
 
     cost_per_page = Column(Float, nullable=False)
+    cost_c = Column(Float, default=0, server_default="1")
+    cost_m = Column(Float, default=0, server_default="1")
+    cost_y = Column(Float, default=0, server_default="1")
+    cost_k = Column(Float, default=0, server_default="1")
 
