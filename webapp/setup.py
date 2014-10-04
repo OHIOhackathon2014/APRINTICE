@@ -18,6 +18,7 @@ requires = [
     'zope.sqlalchemy',
     'pyramid_debugtoolbar',
     'waitress',
+    'pycups',
     ]
 
 setup(name='webapp',
