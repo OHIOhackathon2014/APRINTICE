@@ -33,6 +33,7 @@ def main(global_config, **settings):
     config.add_route("get_jobs", "/jobs")
     config.add_route("get_printers", "/printers")
     config.add_route("delete_job", "/jobs/{id}/delete")
+    config.add_route("release_job", "/jobs/{id}/release/{printer_name}")
 
     config.scan()
 

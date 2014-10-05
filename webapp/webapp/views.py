@@ -1,7 +1,8 @@
 from pyramid.view import view_config
 
-from .models import DBSession, Job, Printer
-from pyramid.httpexceptions import HTTPSeeOther, HTTPForbidden, HTTPOk
+from .models import DBSession, Job, Printer, UserData
+from pyramid.httpexceptions import (HTTPSeeOther, HTTPForbidden, HTTPOk,
+        HTTPNotFound)
 
 
 @view_config(route_name='home', renderer='templates/mytemplate.pt')
@@ -84,3 +85,44 @@ def delete_job(req):
     q = q.delete()
 
     return None
+
+@view_config(route_name="release_job", request_method="POST")
+def release_job(req):
+    user = req.session.get("username")
+    job_id = req.matchdict["id"]
+    printer_name = req.matchdict["printer_name"]
+
+    if not user:
+        return HTTPForbidden()
+
+    q = DBSession.query(Job)
+    q = q.filter(Job.id == job_id)
+    q = q.filter(Job.user_name == user)
+    job = q.first()
+
+    q = DBSession.query(Printer)
+    q = q.filter(Printer.name == printer_name)
+    printer = q.first()
+
+    q = DBSession.query(UserData)
+    q = q.filter(UserData.user_name == user)
+    user = q.first()
+
+    if not printer or not job:
+        return HTTPNotFound()
+
+    cost = job.get_cost(printer)
+
+    # Check balance
+    if cost > user.balance:
+        return HTTPForbidden()
+
+    # Otherwise good to go
+    user.balance -= cost
+    DBSession.add(user)
+
+    job.release(printer)
+    job.delete()
+    DBSession.delete(job)
+
+    return HTTPOk()
