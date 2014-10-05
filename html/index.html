@@ -4,14 +4,16 @@
 <meta name="robots" content="noindex, nofollow">
 <title>APRINTICE</title>
 <link rel="stylesheet" href="style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 <script src="script.js"></script>
+<script src="jquery.textfill.min.js"></script>
 </head>
 <body ng-controller="jobsController">
 	<div id="container">
 		<div id="header">
 			<div id="logo"></div>
-			<div id="welcome">Welcome, {username}</div>
+			<div id="welcome">Welcome, {{userService.user.username}}</div>
 			<div id="logout"></div>
 		</div>
 		<div id="main">
@@ -112,8 +114,9 @@
 			<div id="balance-title">Your Balance:</div>
 			<div id="balance">
 				<sup>&#36;</sup>
-				0.00
+				{{getBalance()}}
 			</div>
+			<div id="delete"></div>
 			<div id="preview"></div>
 			<div id="print"></div>
 		</div>

@@ -60,14 +60,40 @@ function printersService($http)
 //register service
 printerApp.service("printersService", ["$http", printersService]);
 
+function userService($http)
+{
+	// the object that will be the service
+	var service = new Object();
+	
+	// Array that holds the users objects
+	service.user = {};
+	
+	// Function that gets the users from the server
+	service.getUser = function() {
+		// Do AJAX GET.
+		$http.get("users.json").success(function(data) {
+			// Returned JSON a user object
+			service.user = data;
+		});
+	};
+	
+	service.getUser();
+	
+	return service;
+}
+
+//register service
+printerApp.service("userService", ["$http", userService]);
 
 // Function to create controller to display the jobs
 // Depends on jobs service and scope service
-function jobsController($scope, jobsService, printersService)
+function jobsController($scope, jobsService, printersService, userService)
 {
 	$scope.service = jobsService; //expose jobsService as "service" in the html
 	$scope.printersService = printersService; // also need printers service
+	$scope.userService = userService; // also also need users service
 	$scope.getMonth = function(date) {
+		date = date.replace(/-/g,"/");
 		var d = new Date(date);
 		var month = new Array();
 		month[0] = "JAN";
@@ -86,11 +112,13 @@ function jobsController($scope, jobsService, printersService)
 		return n;
 	};
 	$scope.getDay = function(date) {
+		date = date.replace(/-/g,"/");
 		var d = new Date(date);
 		var day = d.getDate();
 		return day;
 	};
 	$scope.getTime = function(date) {
+		date = date.replace(/-/g,"/");
 		var d = new Date(date);
 		var h = d.getHours();
 		var m = d.getMinutes();
@@ -112,8 +140,24 @@ function jobsController($scope, jobsService, printersService)
 		var price = job.pages * printer.costPerPage + job.percentC * printer.costC + job.percentY * printer.costY + job.percentM * printer.costM + job.percentK * printer.costK;
 		return price.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 	};
+	
+	$scope.getBalance = function() {
+		if ($scope.userService.user.balance == null)
+			return 0;
+		return $scope.userService.user.balance.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+	};
 }
 
-// register controller
-printerApp.controller("jobsController", ["$scope", "jobsService", "printersService", jobsController]);
+/* function printersController($scope, jobsService, printersService, userService)
+{
+	$scope.service = jobsService; //expose jobsService as "service" in the html
+	$scope.printersService = printersService; // also need printers service
+	$scope.userService = userService; // also also need users service
+} */
 
+// register controller
+printerApp.controller("jobsController", ["$scope", "jobsService", "printersService", "userService", jobsController]);
+
+$(window).load(function() {
+	$('.jobtitle').textfill({ maxFontPixels: 22 });
+});

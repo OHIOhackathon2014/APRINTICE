@@ -38,10 +38,10 @@ body {
 #welcome {
 	width:400px;
 	font-family:BebasNeue, sans-serif;
-	font-size:24px;
-	color:#333;
+	font-size:26px;
+	color:#4e4e4e;
 	text-align:center;
-	margin-top:48px;
+	margin-top:46px;
 	margin-left:400px;
 	position:absolute;
 }
@@ -89,6 +89,7 @@ body {
 	height:30px;
 	float:left;
 	padding:15px 15px;
+	white-space:nowrap;
 }
 
 .jobprice {
@@ -180,7 +181,7 @@ body {
 	width:140px;
 	font-size:44px;
 	color:#4e4e4e;
-	margin-left:110px;
+	margin-left:112px;
 	margin-top:57px;
 	position:absolute;
 	text-align:center;
@@ -188,7 +189,21 @@ body {
 
 #balance sup {
 	font-size:25px;
-	margin-right:-6px;
+	margin-left:-12px;
+	position:absolute;
+}
+
+#delete {
+	width:165px;
+	height:81px;
+	background:url(images/delete.png);
+	margin-top:27px;
+	margin-left:542px;
+	position:absolute;
+}
+
+#delete:hover {
+	cursor:pointer;
 }
 
 #preview {
@@ -222,7 +237,6 @@ body {
 #login {
 	margin:16% auto 0 auto;
 	text-align:center;
-	line-height:2.2;
 	font-family:BebasNeue, sans-serif;
 	font-size:28px;
 	color:#4e4e4e;
@@ -232,17 +246,17 @@ body {
 	background:url(images/logo_big.png) no-repeat;
 	width:167px;
 	height:39px;
-	margin:0 auto;
+	margin:0 auto 15px auto;
 }
 
 #username {
-	height:25px;
+	height:30px;
 	width:120px;
 	border-radius:3px;
 }
 
 #password {
-	height:25px;
+	height:30px;
 	width:120px;
 	border-radius:3px;
 }
