@@ -27,6 +27,25 @@ def logout(req):
     del req.session["username"]
     return HTTPSeeOther("/")
 
+@view_config(route_name="get_user_info", renderer="json")
+def get_user_info(req):
+    user = req.session.get("username")
+    if not user:
+        return HTTPForbidden()
+
+    q = DBSession.query(UserData)
+    q = q.filter(UserData.user_name == user)
+    user = q.first()
+
+    if not user:
+        return HTTPNotFound()
+
+
+    return {
+            "username": user.user_name,
+            "balance": user.balance,
+            }
+
 @view_config(route_name="get_jobs", renderer="json")
 def get_jobs(req):
     user = req.session.get("username")
