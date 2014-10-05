@@ -19,6 +19,14 @@ function jobsService($http, printersService, userService)
 		$http.get("/jobs").success(function(data) {
 			// Returned JSON is an array of jobs. All we have to do is put the results in our jobs arrays
 			service.jobs = data;
+            for (var i in service.jobs)
+            {
+                if (service.selectedJob && service.jobs[i].id == service.selectedJob.id)
+                {
+                    service.selectedJob = service.jobs[i];
+                    break;
+                }
+            }
 		});
 	};
 
