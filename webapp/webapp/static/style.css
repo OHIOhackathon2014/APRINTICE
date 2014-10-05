@@ -24,6 +24,8 @@ body {
 	height:128px;
 	margin-bottom:-8px;
 	background:url(images/header_back.png) no-repeat;
+	position:absolute;
+	z-index:3;
 }
 
 #logo {
@@ -44,6 +46,89 @@ body {
 	margin-top:46px;
 	margin-left:400px;
 	position:absolute;
+}
+
+#select {
+	font-family:BebasNeue, sans-serif;
+	font-size:18px;
+	color:#4e4e4e;
+	width:140px;
+	margin-left:530px;
+	margin-top:100px;
+	z-index:10;
+	position:absolute;
+	white-space:no-wrap;
+	text-align:center;
+}
+
+#select:hover {
+	cursor:pointer;
+}
+
+.select_arrow {
+	background:url(images/down_arrow.png) no-repeat;
+	width:12px;
+	height:11px;
+	display:inline-block;
+	margin-bottom:1px;
+}
+
+#select_back {
+	background:url(images/printer_back_glow.png);
+	width:342px;
+	height:120px;
+	position:absolute;
+	margin-top:0px;
+	margin-left:432px;
+	z-index:5;
+}
+
+#select_dropdown {
+	width:400px;
+	height:492px;
+	position:absolute;
+	top:-382px;
+	margin-left:397px;
+	background-color:#e6e6e6;
+	border:1px solid #7e7e7e;
+	z-index:2;
+	padding-top:8px;
+}
+
+.select_printer_container {
+	width:370px;
+	height:70px;
+	padding:10px 15px;
+	display:block;
+	border-bottom:1px solid #aaa;
+}
+
+.select_printer_container:hover {
+	background-color:#d3d3d3;
+	cursor:pointer;
+}
+
+.select_printer_title {
+	font-family:BebasNeue, sans-serif;
+	font-size:30px;
+	height:40px;
+}
+
+.select_printer_desc {
+	font-family:'Source Sans Pro', sans-serif;
+	font-size:20px;
+	height:30px;
+}
+
+#select_dimlights {
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:1;
+	display:none;
+	background:rgba(0,0,0,0.3);
 }
 
 #logout {

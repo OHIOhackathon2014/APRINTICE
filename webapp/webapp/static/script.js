@@ -187,3 +187,15 @@ function jobsController($scope, jobsService, printersService, userService)
 
 // register controller
 printerApp.controller("jobsController", ["$scope", "jobsService", "printersService", "userService", jobsController]);
+
+$(document).ready(function() {
+	$('#select').click(function() {
+		if ($('#select_dimlights').is(":hidden")) {
+			$('#select_dimlights').fadeIn(500);
+			$('#select_dropdown').animate({"top":"118px"}, 500);
+		} else {
+			$('#select_dropdown').animate({"top":"-382px"}, 500);
+			$('#select_dimlights').fadeOut(500);
+		}
+	});
+});

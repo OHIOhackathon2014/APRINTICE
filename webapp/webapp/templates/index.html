@@ -4,6 +4,7 @@
 <meta name="robots" content="noindex, nofollow">
 <title>APRINTICE</title>
 <link rel="stylesheet" href="/static/style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
 <script src="/static/script.js"></script>
 </head>
@@ -13,10 +14,26 @@
 		<div id="header">
 			<div id="logo"></div>
 			<div id="welcome">Welcome, {{userService.user.username}}</div>
+			<div id="select">
+				<div class="select_arrow"></div>&nbsp;&nbsp;
+				SELECT PRINTER
+				&nbsp;&nbsp;<div class="select_arrow"></div>
+			</div>
+			<div id="select_back"></div>
 			<div id="logout"></div>
 		</div>
 		<div id="main">
-			
+			<div id="select_dropdown">
+				<div class="select_printer_container">
+					<div class="select_printer_title">PDF</div>
+					<div class="select_printer_desc">It wishes it was a real printer.</div>
+				</div>
+				<div class="select_printer_container">
+					<div class="select_printer_title">PDF 2</div>
+					<div class="select_printer_desc">Still wishes it was a real printer.</div>
+				</div>
+			</div>
+			<div id="select_dimlights"></div>
 			<!-- Angular JS Jobs -->
 			<div ng-repeat="job in service.jobs">
                 <div class="printjob" ng-click="selectJob(job)"
