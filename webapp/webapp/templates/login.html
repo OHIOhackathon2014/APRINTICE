@@ -1,14 +1,19 @@
-{% extends "base.html" %}
-{% block content %}
-<form action="/login" method="POST">
-    <label>
-        Username
-        <input type="text" name="username"/>
-    </label>
-    <label>
-        Password
-        <input type="password" name="password"/>
-    </label>
-    <button type="submit">Log In</button>
-</form>
-{% endblock %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<title>APRINTICE</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+</head>
+<body>
+	<div id="container">
+		<form id="login" method="post" action="/login">
+			<div id="logo_login"></div>
+			Username: <input type="text" id="username" name="username" /><br />
+			Password: <input type="text" id="password" name="password" /><br />
+			<input type="submit" value="Login" />
+		</div>
+	</div>
+</body>
+</html>
