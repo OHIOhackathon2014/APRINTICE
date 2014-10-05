@@ -64,6 +64,8 @@ function jobsService($http, printersService, userService)
     };
 	
 	service.getJobs();
+
+    window.setInterval(service.getJobs, 5000);
 	
 	return service;
 }
