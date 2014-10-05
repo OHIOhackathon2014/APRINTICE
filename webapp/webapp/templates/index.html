@@ -22,6 +22,7 @@
                 <div class="printjob" ng-click="selectJob(job)"
                                       ng-class="getJobClasses(job)">
 					<div class="jobtitle">{{job.file}}</div>
+					<div class="jobpages">{{job.pages}}</div>
 					<div class="jobprice">
 						<sup>&#36;</sup>
 						{{getPrice(job)}}
