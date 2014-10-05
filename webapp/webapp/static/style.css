@@ -363,9 +363,16 @@ body {
 }
 
 #preview-box iframe {
-    position: absolute;
+    position: relative;
     width: 100%;
     height: 90%;
     z-index: 100;
     border: none;
 }
+
+#preview-box a, #preview-box a:hover, #preview-box a:active, #preview-box a:visited {
+    position: relative;
+    z-index: 100;
+    color: #4E4E4E;
+}
+
