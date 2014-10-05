@@ -21,6 +21,20 @@ function jobsService($http)
 			service.jobs = data;
 		});
 	};
+
+    //delete a job
+    service.deleteJob = function() {
+        var job = service.selectedJob;
+        $http.delete("/jobs/" + job.id);
+        for (var i in service.jobs)
+        {
+            if (service.jobs[i].id == job.id)
+            {
+                service.jobs.splice(i, 1);
+                break;
+            }
+        }
+    };
 	
 	service.getJobs();
 	
