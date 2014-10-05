@@ -4,10 +4,14 @@ from .models import DBSession, Job, Printer, UserData
 from pyramid.httpexceptions import (HTTPSeeOther, HTTPForbidden, HTTPOk,
         HTTPNotFound)
 
+@view_config(route_name="index", renderer="index.html")
+def index(req):
+    user = req.session.get("username")
 
-@view_config(route_name='home', renderer='templates/mytemplate.pt')
-def my_view(request):
-    return {'project': 'webapp'}
+    if not user:
+        return HTTPSeeOther("/login")
+
+    return {}
 
 @view_config(route_name="login", renderer="login.html")
 def login(req):

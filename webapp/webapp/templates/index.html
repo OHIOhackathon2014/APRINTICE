@@ -9,6 +9,7 @@
 <script src="/static/script.js"></script>
 <script src="/static/jquery.textfill.min.js"></script>
 </head>
+{% raw %}
 <body ng-controller="jobsController">
 	<div id="container">
 		<div id="header">
@@ -36,77 +37,6 @@
 				</div>
 				<div class="divider"></div>
 			</span>
-			
-			<!-- Job 1 -->
-			<div class="printjob">
-				<div class="jobtitle">Document1.docx</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					0.86
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">4</div>
-					</div>
-					3:20:56 PM
-				</div>
-			</div>
-			
-			<div class="divider"></div>
-			
-			<!-- Job 2 -->
-			<div class="printjob">
-				<div class="jobtitle">Presentation 10-11-14.pdf</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					2.15
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">3</div>
-					</div>
-					3:20:56 PM
-				</div>
-			</div>
-			
-			<div class="divider"></div>
-			
-			<!-- Job 3 -->
-			<div class="printjob">
-				<div class="jobtitle">Puppies.doc</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					1.20
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">3</div>
-					</div>
-					3:19:43 PM
-				</div>
-			</div>
-			
-			<div class="divider"></div>
-			
-			<!-- Job 4 -->
-			<div class="printjob">
-				<div class="jobtitle">Spreadsheet7.xlsx</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					0.54
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">3</div>
-					</div>
-					1:14:38 AM
-				</div>
-			</div>
-
 		</div>
 	</div>
 	<div id="footer-container">
@@ -122,5 +52,6 @@
 		</div>
 	</div>
 </body>
+{% endraw %}
 </html>
 

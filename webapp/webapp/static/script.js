@@ -15,7 +15,7 @@ function jobsService($http)
 	// Function that gets the jobs from the server
 	service.getJobs = function() {
 		// Do AJAX GET.
-		$http.get("jobs.json").success(function(data) {
+		$http.get("/jobs").success(function(data) {
 			// Returned JSON is an array of jobs. All we have to do is put the results in our jobs arrays
 			service.jobs = data;
 		});
@@ -43,7 +43,7 @@ function printersService($http)
 	// Function that gets the printers from the server
 	service.getPrinters = function() {
 		// Do AJAX GET.
-		$http.get("printers.json").success(function(data) {
+		$http.get("/printers").success(function(data) {
 			// Returned JSON is an array of printers. All we have to do is put the results in our arrays
 			service.printers = data;
 			
@@ -71,7 +71,7 @@ function userService($http)
 	// Function that gets the users from the server
 	service.getUser = function() {
 		// Do AJAX GET.
-		$http.get("users.json").success(function(data) {
+		$http.get("/user").success(function(data) {
 			// Returned JSON a user object
 			service.user = data;
 		});
