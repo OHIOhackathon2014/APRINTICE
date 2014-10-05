@@ -36,6 +36,11 @@ for match in re_iter:
     pct_y += float(match.group(3))
     pct_k += float(match.group(4))
 
+pct_c /= 100.0
+pct_m /= 100.0
+pct_y /= 100.0
+pct_k /= 100.0
+
 # TODO: use actual package name
 from webapp.models import configure_database, DBSession, Job
 import transaction

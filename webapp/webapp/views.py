@@ -61,6 +61,7 @@ def get_jobs(req):
 
     q = DBSession.query(Job)
     q = q.filter(Job.user_name == user)
+    q = q.order_by(Job.time.desc())
 
     for row in q.all():
         fn = os.path.splitext(os.path.basename(row.file_name))[0]
