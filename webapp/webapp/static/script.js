@@ -176,6 +176,16 @@ function jobsController($scope, jobsService, printersService, userService)
     $scope.selectJob = function(job) {
         jobsService.selectedJob = job;
     };
+
+    $scope.previewJob = function() {
+        var job = jobsService.selectedJob;
+        if (!job)
+            return;
+
+        document.getElementById("preview-iframe").src = "/jobs/" + job.id;
+        document.getElementById("preview-box").style.display = "block";
+        console.log("asdF");
+    };
 }
 
 /* function printersController($scope, jobsService, printersService, userService)

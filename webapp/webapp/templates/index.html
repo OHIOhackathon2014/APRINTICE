@@ -9,6 +9,10 @@
 </head>
 {% raw %}
 <body ng-controller="jobsController">
+    <div id="preview-box" style="display:none">
+        <iframe id="preview-iframe">
+        </iframe>
+    </div>
 	<div id="container">
 		<div id="header">
 			<div id="logo"></div>
@@ -46,8 +50,8 @@
 				<sup>&#36;</sup>
 				{{getBalance()}}
 			</div>
-			<div id="delete" data-ng-click="service.deleteJob()"></div>
-			<div id="preview"></div>
+			<div id="delete" ng-click="service.deleteJob()"></div>
+			<div id="preview" ng-click="previewJob()"></div>
 			<div id="print"></div>
 		</div>
 	</div>
