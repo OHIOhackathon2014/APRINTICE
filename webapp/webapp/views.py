@@ -64,6 +64,7 @@ def get_jobs(req):
 
     for row in q.all():
         fn = os.path.splitext(os.path.basename(row.file_name))[0]
+        fn = fn.partition("-")[2]
         results.append({
             "id": row.id,
             "file": fn,
