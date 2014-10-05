@@ -27,14 +27,12 @@
             <a href="/logout"><div id="logout"></div></a>
 		</div>
 		<div id="main">
-			<div id="select_dropdown">
-				<div class="select_printer_container">
-					<div class="select_printer_title">PDF</div>
-					<div class="select_printer_desc">It wishes it was a real printer.</div>
-				</div>
-				<div class="select_printer_container">
-					<div class="select_printer_title">PDF 2</div>
-					<div class="select_printer_desc">Still wishes it was a real printer.</div>
+			<div id="select_dropdown" ng-controller="printersController">
+                <div class="select_printer_container" ng-repeat="printer in
+                printersService.printers"
+                                                      ng-click="printersService.selectPrinter(printer)">
+                    <div class="select_printer_title">{{printer.title}}</div>
+                    <div class="select_printer_desc">{{printer.description}}</div>
 				</div>
 			</div>
 			<div id="select_dimlights"></div>

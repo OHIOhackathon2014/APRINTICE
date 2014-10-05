@@ -96,6 +96,12 @@ function printersService($http)
 			service.selectedPrinter = service.printers[0];
 		});
 	};
+
+    service.selectPrinter = function(printer) {
+        service.selectedPrinter = printer;
+
+        $("#select").click();
+    };
 	
 	service.getPrinters();
 	
@@ -217,12 +223,15 @@ function jobsController($scope, jobsService, printersService, userService)
     };
 }
 
-/* function printersController($scope, jobsService, printersService, userService)
+function printersController($scope, jobsService, printersService, userService)
 {
 	$scope.service = jobsService; //expose jobsService as "service" in the html
 	$scope.printersService = printersService; // also need printers service
 	$scope.userService = userService; // also also need users service
-} */
+}
+
+printerApp.controller("printersController", ["$scope", "jobsService",
+        "printersService", "userService", printersController]);
 
 // register controller
 printerApp.controller("jobsController", ["$scope", "jobsService", "printersService", "userService", jobsController]);
