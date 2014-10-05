@@ -1,125 +1,126 @@
-<!doctype html>
-<html lang="en" ng-app="printerApp">
-<head>
-<meta name="robots" content="noindex, nofollow">
-<title>APRINTICE</title>
-<link rel="stylesheet" href="style.css">
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-<script src="script.js"></script>
-<script src="jquery.textfill.min.js"></script>
-</head>
-<body ng-controller="jobsController">
-	<div id="container">
-		<div id="header">
-			<div id="logo"></div>
-			<div id="welcome">Welcome, {{userService.user.username}}</div>
-			<div id="logout"></div>
-		</div>
-		<div id="main">
-			
-			<!-- Angular JS Jobs -->
-			<span ng-repeat="job in service.jobs">
-				<div class="printjob">
-					<div class="jobtitle">{{job.file}}</div>
-					<div class="jobprice">
-						<sup>&#36;</sup>
-						{{getPrice(job)}}
-					</div>
-					<div class="jobdate">
-						<div class="jobdatecontainer">
-							<div class="jobdatemonth">{{getMonth(job.date)}}</div>
-							<div class="jobdateday">{{getDay(job.date)}}</div>
-						</div>
-						{{getTime(job.date)}}
-					</div>
-				</div>
-				<div class="divider"></div>
-			</span>
-			
-			<!-- Job 1 -->
-			<div class="printjob">
-				<div class="jobtitle">Document1.docx</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					0.86
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">4</div>
-					</div>
-					3:20:56 PM
-				</div>
-			</div>
-			
-			<div class="divider"></div>
-			
-			<!-- Job 2 -->
-			<div class="printjob">
-				<div class="jobtitle">Presentation 10-11-14.pdf</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					2.15
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">3</div>
-					</div>
-					3:20:56 PM
-				</div>
-			</div>
-			
-			<div class="divider"></div>
-			
-			<!-- Job 3 -->
-			<div class="printjob">
-				<div class="jobtitle">Puppies.doc</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					1.20
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">3</div>
-					</div>
-					3:19:43 PM
-				</div>
-			</div>
-			
-			<div class="divider"></div>
-			
-			<!-- Job 4 -->
-			<div class="printjob">
-				<div class="jobtitle">Spreadsheet7.xlsx</div>
-				<div class="jobprice">
-					<sup>&#36;</sup>
-					0.54
-				</div>
-				<div class="jobdate">
-					<div class="jobdatecontainer">
-						<div class="jobdatemonth">OCT</div>
-						<div class="jobdateday">3</div>
-					</div>
-					1:14:38 AM
-				</div>
-			</div>
-
-		</div>
-	</div>
-	<div id="footer-container">
-		<div id="footer">
-			<div id="balance-title">Your Balance:</div>
-			<div id="balance">
-				<sup>&#36;</sup>
-				{{getBalance()}}
-			</div>
-			<div id="delete"></div>
-			<div id="preview"></div>
-			<div id="print"></div>
-		</div>
-	</div>
-</body>
+<!doctype html>
+<html lang="en" ng-app="printerApp">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<title>APRINTICE</title>
+<link rel="stylesheet" href="/static/style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+<script src="/static/script.js"></script>
+<script src="/static/jquery.textfill.min.js"></script>
+</head>
+<body ng-controller="jobsController">
+	<div id="container">
+		<div id="header">
+			<div id="logo"></div>
+			<div id="welcome">Welcome, {{userService.user.username}}</div>
+			<div id="logout"></div>
+		</div>
+		<div id="main">
+			
+			<!-- Angular JS Jobs -->
+			<span ng-repeat="job in service.jobs">
+				<div class="printjob">
+					<div class="jobtitle">{{job.file}}</div>
+					<div class="jobprice">
+						<sup>&#36;</sup>
+						{{getPrice(job)}}
+					</div>
+					<div class="jobdate">
+						<div class="jobdatecontainer">
+							<div class="jobdatemonth">{{getMonth(job.date)}}</div>
+							<div class="jobdateday">{{getDay(job.date)}}</div>
+						</div>
+						{{getTime(job.date)}}
+					</div>
+				</div>
+				<div class="divider"></div>
+			</span>
+			
+			<!-- Job 1 -->
+			<div class="printjob">
+				<div class="jobtitle">Document1.docx</div>
+				<div class="jobprice">
+					<sup>&#36;</sup>
+					0.86
+				</div>
+				<div class="jobdate">
+					<div class="jobdatecontainer">
+						<div class="jobdatemonth">OCT</div>
+						<div class="jobdateday">4</div>
+					</div>
+					3:20:56 PM
+				</div>
+			</div>
+			
+			<div class="divider"></div>
+			
+			<!-- Job 2 -->
+			<div class="printjob">
+				<div class="jobtitle">Presentation 10-11-14.pdf</div>
+				<div class="jobprice">
+					<sup>&#36;</sup>
+					2.15
+				</div>
+				<div class="jobdate">
+					<div class="jobdatecontainer">
+						<div class="jobdatemonth">OCT</div>
+						<div class="jobdateday">3</div>
+					</div>
+					3:20:56 PM
+				</div>
+			</div>
+			
+			<div class="divider"></div>
+			
+			<!-- Job 3 -->
+			<div class="printjob">
+				<div class="jobtitle">Puppies.doc</div>
+				<div class="jobprice">
+					<sup>&#36;</sup>
+					1.20
+				</div>
+				<div class="jobdate">
+					<div class="jobdatecontainer">
+						<div class="jobdatemonth">OCT</div>
+						<div class="jobdateday">3</div>
+					</div>
+					3:19:43 PM
+				</div>
+			</div>
+			
+			<div class="divider"></div>
+			
+			<!-- Job 4 -->
+			<div class="printjob">
+				<div class="jobtitle">Spreadsheet7.xlsx</div>
+				<div class="jobprice">
+					<sup>&#36;</sup>
+					0.54
+				</div>
+				<div class="jobdate">
+					<div class="jobdatecontainer">
+						<div class="jobdatemonth">OCT</div>
+						<div class="jobdateday">3</div>
+					</div>
+					1:14:38 AM
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<div id="footer-container">
+		<div id="footer">
+			<div id="balance-title">Your Balance:</div>
+			<div id="balance">
+				<sup>&#36;</sup>
+				{{getBalance()}}
+			</div>
+			<div id="delete"></div>
+			<div id="preview"></div>
+			<div id="print"></div>
+		</div>
+	</div>
+</body>
 </html>
+
