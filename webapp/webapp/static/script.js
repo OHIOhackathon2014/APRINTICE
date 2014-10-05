@@ -11,6 +11,7 @@ function jobsService($http)
 	
 	// Array that holds the job objects
 	service.jobs = [];
+    service.selectedJob = null;
 	
 	// Function that gets the jobs from the server
 	service.getJobs = function() {
@@ -146,6 +147,21 @@ function jobsController($scope, jobsService, printersService, userService)
 			return 0;
 		return $scope.userService.user.balance.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
 	};
+
+    $scope.getJobClasses = function (job) {
+        if (jobsService.selectedJob == job)
+        {
+            return ["selected"];
+        }
+        else
+        {
+            return [];
+        }
+    };
+
+    $scope.selectJob = function(job) {
+        jobsService.selectedJob = job;
+    };
 }
 
 /* function printersController($scope, jobsService, printersService, userService)

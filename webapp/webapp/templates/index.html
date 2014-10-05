@@ -18,8 +18,9 @@
 		<div id="main">
 			
 			<!-- Angular JS Jobs -->
-			<span ng-repeat="job in service.jobs">
-				<div class="printjob">
+			<div ng-repeat="job in service.jobs">
+                <div class="printjob" ng-click="selectJob(job)"
+                                      ng-class="getJobClasses(job)">
 					<div class="jobtitle">{{job.file}}</div>
 					<div class="jobprice">
 						<sup>&#36;</sup>
@@ -34,7 +35,7 @@
 					</div>
 				</div>
 				<div class="divider"></div>
-			</span>
+			</div>
 		</div>
 	</div>
 	<div id="footer-container">
