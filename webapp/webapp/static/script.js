@@ -157,7 +157,3 @@ function jobsController($scope, jobsService, printersService, userService)
 
 // register controller
 printerApp.controller("jobsController", ["$scope", "jobsService", "printersService", "userService", jobsController]);
-
-$(window).load(function() {
-	$('.jobtitle').textfill({ maxFontPixels: 22 });
-});
