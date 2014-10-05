@@ -3,6 +3,7 @@ from pyramid.view import view_config
 from .models import DBSession, Job, Printer, UserData
 from pyramid.httpexceptions import (HTTPSeeOther, HTTPForbidden, HTTPOk,
         HTTPNotFound)
+import os
 
 @view_config(route_name="index", renderer="index.html")
 def index(req):
@@ -62,9 +63,10 @@ def get_jobs(req):
     q = q.filter(Job.user_name == user)
 
     for row in q.all():
+        fn = os.path.splitext(os.path.basename(row.file_name))[0]
         results.append({
             "id": row.id,
-            "file": row.file_name,
+            "file": fn,
             "pages": row.pages,
             "percentC": row.percent_c,
             "percentM": row.percent_m,
