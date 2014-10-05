@@ -4,7 +4,7 @@
 var printerApp = angular.module("printerApp", []);
 
 // function to create the jobs service. Depends on $http service
-function jobsService($http)
+function jobsService($http, printersService, userService)
 {
 	// the object that will be the service
 	var service = new Object();
@@ -35,6 +35,33 @@ function jobsService($http)
             }
         }
     };
+
+    //release a job
+    service.releaseJob = function() {
+        var printer = printersService.selectedPrinter;
+        var job = service.selectedJob;
+        var price = job.pages * printer.costPerPage + job.percentC *
+            printer.costC + job.percentY * printer.costY + job.percentM *
+            printer.costM + job.percentK * printer.costK;
+
+        if (userService.user.balance < price)
+        {
+            return;
+        }
+
+        userService.user.balance -= price;
+
+        $http.post("/jobs/" + job.id + "/release/" + printer.name);
+
+        for (var i in service.jobs)
+        {
+            if (service.jobs[i].id == job.id)
+            {
+                service.jobs.splice(i, 1);
+                break;
+            }
+        }
+    };
 	
 	service.getJobs();
 	
@@ -42,7 +69,8 @@ function jobsService($http)
 }
 
 //register our service
-printerApp.service("jobsService", ["$http", jobsService]);
+printerApp.service("jobsService", ["$http", "printersService", "userService",
+    jobsService]);
 
 function printersService($http)
 {
@@ -184,7 +212,6 @@ function jobsController($scope, jobsService, printersService, userService)
 
         document.getElementById("preview-iframe").src = "/jobs/" + job.id;
         document.getElementById("preview-box").style.display = "block";
-        console.log("asdF");
     };
 }
 
