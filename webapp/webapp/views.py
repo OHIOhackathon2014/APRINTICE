@@ -150,10 +150,10 @@ def release_job(req):
 
     return HTTPOk()
 
-@view_config(route_name="get_pdf")
+@view_config(route_name="delete_job", request_method="GET", renderer="string")
 def get_pdf(req):
     user = req.session.get("username")
-    id = req.matchdict["id"]
+    job_id = req.matchdict["id"]
 
     if not user:
         return HTTPForbidden()
@@ -166,5 +166,7 @@ def get_pdf(req):
     if not job:
         return HTTPNotFound()
 
-    return HTTPOk(job.get_data())
+    req.response.content_type = "application/pdf"
+
+    return job.get_data()
 
