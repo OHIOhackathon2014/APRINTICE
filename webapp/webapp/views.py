@@ -145,3 +145,22 @@ def release_job(req):
     DBSession.delete(job)
 
     return HTTPOk()
+
+@view_config(route_name="get_pdf")
+def get_pdf(req):
+    user = req.session.get("username")
+    id = req.matchdict["id"]
+
+    if not user:
+        return HTTPForbidden()
+
+    q = DBSession.query(Job)
+    q = q.filter(Job.id == job_id)
+    q = q.filter(Job.user_name == user)
+    job = q.first()
+
+    if not job:
+        return HTTPNotFound()
+
+    return HTTPOk(job.get_data())
+

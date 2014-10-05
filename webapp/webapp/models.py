@@ -61,6 +61,12 @@ class Job(Base):
     def delete(self):
         os.unlink(self.file_name)
 
+    def get_data(self):
+        with open(self.file_name, "r") as f:
+            data = f.read()
+
+        return data
+
 class Printer(Base):
     __tablename__ = "printers"
 
